@@ -17,17 +17,17 @@ RUN mkdir /var/lib/apt/lists/partial \
         && rm -rf /var/lib/apt/lists/*
 
 #libssl
-RUN wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb \
+RUN curl -LfsSo libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb \
     && dpkg -i libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb \
     && rm  libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb
 
 # gcc-6-base for libgfortran3
-RUN wget http://http.us.debian.org/debian/pool/main/g/gcc-6/gcc-6-base_6.3.0-18+deb9u1_amd64.deb \
+RUN curl -LfsSo gcc-6-base_6.3.0-18+deb9u1_amd64.deb http://http.us.debian.org/debian/pool/main/g/gcc-6/gcc-6-base_6.3.0-18+deb9u1_amd64.deb \
     && dpkg -i gcc-6-base_6.3.0-18+deb9u1_amd64.deb \
     && rm gcc-6-base_6.3.0-18+deb9u1_amd64.deb
 
 # libgfortran3
-RUN wget http://http.us.debian.org/debian/pool/main/g/gcc-6/libgfortran3_6.3.0-18+deb9u1_amd64.deb \
+RUN curl -LfsSo libgfortran3_6.3.0-18+deb9u1_amd64.deb http://http.us.debian.org/debian/pool/main/g/gcc-6/libgfortran3_6.3.0-18+deb9u1_amd64.deb \
     && dpkg -i libgfortran3_6.3.0-18+deb9u1_amd64.deb \
     && rm libgfortran3_6.3.0-18+deb9u1_amd64.deb
     
