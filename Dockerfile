@@ -10,11 +10,16 @@ LABEL org.label-schema.vcs-url="https://github.com/TheBoegl/jenkins-javafx-xvfb-
 
 # Switching from jenkins to root user...
 USER root
-# multiarch-support for libssl
+# libquadmath0 for libgfortran3
 RUN mkdir /var/lib/apt/lists/partial \
         && apt-get update && apt-get install -y --no-install-recommends \
-           multiarch-support libquadmath0 \
+           libquadmath0 \
         && rm -rf /var/lib/apt/lists/*
+
+#multiarch-support for libssl
+RUN curl -LfsSo multiarch-support_2.28-10_amd64.deb http://http.us.debian.org/debian/pool/main/g/glibc/multiarch-support_2.28-10_amd64.deb \
+    && dpkg -i multiarch-support_2.28-10_amd64.deb \
+    && rm multiarch-support_2.28-10_amd64.deb
 
 #libssl
 RUN curl -LfsSo libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb \
